@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
+
 class Entity
 {
 
@@ -31,6 +33,9 @@ class Entity
             // $methodName = "set".str_replace(' ', '', ucwords(str_replace(array('-', '_'), ' ', $key)));
 
             if (method_exists($this, $methodName)) {
+                if ($key === 'created_at') {
+                    $value = new DateTimeImmutable($value);
+                }
                 $this->{$methodName}($value);
             }
         }

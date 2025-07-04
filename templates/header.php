@@ -1,3 +1,9 @@
+<?php
+
+use App\Routing\Router;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,9 +24,9 @@
                 <span class="ml-3 text-xl">Tailblocks</span>
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <a href="/" class="mr-5 hover:text-gray-900">Accueil</a>
-                <a href="/about/" class="mr-5 hover:text-gray-900">A propos</a>
-                <a class="mr-5 hover:text-gray-900">Third Link</a>
+                <a href="/" class="mr-5 hover:text-gray-900 <?=Router::isActiveRoute("/") ? "text-indigo-500 " : "" ?>">Accueil</a>
+                <a href="/about/" class="mr-5 hover:text-gray-900 <?=Router::isActiveRoute("/about/") ? "text-indigo-500 " : "" ?>">A propos</a>
+                <a href="/jobs/" class="mr-5 hover:text-gray-900 <?=Router::isActiveRoute("/jobs/") ? "text-indigo-500 " : "" ?>">Les offres</a>
                 <a class="mr-5 hover:text-gray-900">Fourth Link</a>
             </nav>
             <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button

@@ -31,11 +31,22 @@ class CategoryRepository extends Repository
         $query->bindValue(':id', $id, $this->pdo::PARAM_INT);
         $query->execute();
         $categoryArray = $query->fetch($this->pdo::FETCH_ASSOC);
-        $categoryArray["first_name"] = "John";
         
         $category = Category::createAndHydrate($categoryArray);
 
         return $category;
 
+    }
+
+    public function persist(Category $category):bool
+    {
+        if ($category->getId()) {
+            // Update
+        } else {
+            // Insertion
+            $query = $this->pdo->prepare("INSERT INTO `category` (`name`) VALUES (:name);");
+            $query->bindValue(':name', $category->getName(), $this->pdo::PARAM_STR);
+        }
+        return $query->execute();
     }
 }

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 06 juin 2025 à 18:50
--- Version du serveur :  5.7.36
+-- Généré le : ven. 04 juil. 2025 à 18:18
+-- Version du serveur : 5.7.36
 -- Version de PHP : 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `category`
@@ -41,7 +40,9 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Développeur fullstack'),
-(2, 'Devops');
+(2, 'Devops'),
+(3, 'Administrateur système'),
+(4, 'Technicien informatique');
 
 -- --------------------------------------------------------
 
@@ -101,17 +102,23 @@ CREATE TABLE IF NOT EXISTS `job` (
   `salary` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `company_id` (`company_id`),
   KEY `country_id` (`country_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `job`
 --
 
-INSERT INTO `job` (`id`, `title`, `description`, `salary`, `country_id`, `company_id`) VALUES
-(1, 'Développeur Symfony', 'Description', 38000, 1, 1);
+INSERT INTO `job` (`id`, `title`, `description`, `salary`, `country_id`, `company_id`, `created_at`) VALUES
+(8, 'Développeur Fullstack JavaScript', 'Nous recherchons un développeur fullstack expérimenté pour concevoir, développer et maintenir des applications web performantes. Vous travaillerez en étroite collaboration avec les équipes produit et design. Une excellente maîtrise de React, Node.js et des outils de versioning est attendue.', 45000, 1, 1, '2025-07-02 18:17:39'),
+(9, 'Ingénieur DevOps', 'Vous rejoindrez notre équipe DevOps pour automatiser l’infrastructure, assurer la continuité de service et améliorer les processus de déploiement. Connaissance de Docker, Kubernetes, GitLab CI/CD et cloud (AWS ou GCP) requise. Vous êtes rigoureux, autonome et force de proposition.', 55000, 1, 2, '2025-07-02 18:17:43'),
+(10, 'Administrateur Systèmes Linux', 'En tant qu’administrateur systèmes, vous assurerez la gestion quotidienne, le monitoring et la sécurisation de nos serveurs sous Linux. Vous serez également en charge de la mise en place de scripts d’automatisation avec Bash, Ansible ou Python. Connaissance en réseau fortement appréciée.', 42000, 1, 1, '2025-07-01 18:17:52'),
+(11, 'Développeur Backend PHP Symfony', 'Vous participerez au développement d’APIs robustes en PHP à l’aide du framework Symfony. Le poste nécessite une bonne maîtrise des concepts MVC, des tests automatisés et des bases de données relationnelles. Une expérience en RESTful API est un plus pour ce poste à responsabilité croissante.', 48000, 1, 2, '2025-07-04 18:17:49'),
+(12, 'Développeur Mobile React Native', 'Intégré à l’équipe mobile, vous développerez des applications cross-platform en React Native. Vous serez impliqué dans la conception technique, l’intégration d’API et l’optimisation des performances. Une connaissance de l’écosystème mobile et des bonnes pratiques UX/UI est indispensable.', 46000, 1, 1, '2025-06-04 18:17:57'),
+(13, 'Ingénieur SRE (Site Reliability Engineer)', 'Vous participerez à la construction d’une infrastructure résiliente et scalable. Vos missions incluent le monitoring, la gestion des incidents, la rédaction de post-mortem et l’amélioration continue. Expertise en cloud, scripting et culture DevOps fortement recommandée pour ce rôle stratégique.', 60000, 1, 2, '2025-07-11 18:18:01');
 
 -- --------------------------------------------------------
 
